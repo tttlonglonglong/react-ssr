@@ -3,6 +3,7 @@ import React from 'react'
 import { renderToString } from 'react-dom/server'
 import Home from './container/Home'
 // ReactDOM.render(<Home />, document.getElementById('root'))
+//
 
 const app = express()
 const content = renderToString(<Home />)
