@@ -1,18 +1,17 @@
 import React from 'React'
-
-const Home = () => {
-  return (
-    <div>
-      <div>hello， dell lee1 </div>
-      <button
-        onClick={() => {
-          alert('click')
-        }}
-      >
-        click11
-      </button>
-    </div>
-  )
+import Header from '../../components/Header'
+export default class Home extends React.Component {
+  componentDidMount() {
+    console.log('HOME---componentDidMount')
+  }
+  render() {
+    return (
+      <div>
+        <Header />
+        <div> Home </div>
+      </div>
+    )
+  }
 }
 
-export default Home
+//  Home
