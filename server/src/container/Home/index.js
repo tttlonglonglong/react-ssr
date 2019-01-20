@@ -1,17 +1,24 @@
 import React from 'React'
 import Header from '../../components/Header'
-export default class Home extends React.Component {
+import { connect } from 'react-redux'
+
+class Home extends React.Component {
   componentDidMount() {
     console.log('HOME---componentDidMount')
   }
   render() {
+    const props = this.props
     return (
       <div>
         <Header />
-        <div> Home </div>
+        <div> Home,this is {props.name} </div>
       </div>
     )
   }
 }
 
-//  Home
+const mapStateToProps = state => ({ name: state.name })
+export default connect(
+  mapStateToProps,
+  null
+)(Home)
