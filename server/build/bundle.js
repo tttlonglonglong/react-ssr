@@ -118,7 +118,7 @@ eval("\n\nif (false) {} else {\n  module.exports = __webpack_require__(/*! ./cjs
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-eval("\n\nObject.defineProperty(exports, \"__esModule\", {\n  value: true\n});\n\nvar _react = __webpack_require__(/*! react */ \"react\");\n\nvar _react2 = _interopRequireDefault(_react);\n\nvar _reactRouterDom = __webpack_require__(/*! react-router-dom */ \"react-router-dom\");\n\nvar _Home = __webpack_require__(/*! ./container/Home */ \"./src/container/Home/index.js\");\n\nvar _Home2 = _interopRequireDefault(_Home);\n\nvar _Login = __webpack_require__(/*! ./container/Login */ \"./src/container/Login/index.js\");\n\nvar _Login2 = _interopRequireDefault(_Login);\n\nfunction _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }\n\nexports.default = _react2.default.createElement(\n  'div',\n  null,\n  _react2.default.createElement(_reactRouterDom.Route, { path: '/', component: _Home2.default }),\n  _react2.default.createElement(_reactRouterDom.Route, { path: '/login', component: _Login2.default })\n);\n\n//# sourceURL=webpack:///./src/Routes.js?");
+eval("\n\nObject.defineProperty(exports, \"__esModule\", {\n  value: true\n});\n\nvar _Home = __webpack_require__(/*! ./container/Home */ \"./src/container/Home/index.js\");\n\nvar _Home2 = _interopRequireDefault(_Home);\n\nvar _Login = __webpack_require__(/*! ./container/Login */ \"./src/container/Login/index.js\");\n\nvar _Login2 = _interopRequireDefault(_Login);\n\nfunction _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }\n\n// console.log('Home.loadData', Home.loadData)\n// import React from 'react'\n// import { Route } from 'react-router-dom'\n\nexports.default = [{\n  key: 'home',\n  path: '/',\n  component: _Home2.default,\n  exact: true,\n  loadData: _Home2.default.loadData\n  // 测试多级路由匹配\n  // routes: [\n  //   {\n  //     key: 'ttt',\n  //     path: '/login',\n  //     component: Login,\n  //     exact: true\n  //   }\n  // ]\n}, {\n  key: 'login',\n  path: '/login',\n  component: _Login2.default,\n  exact: true\n  // loadData: Login.loadData()\n}];\n\n// export default (\n//   <div>\n//     <Route path=\"/\" component={Home} />\n//     <Route path=\"/login\" component={Login} />\n//   </div>\n// )\n\n//# sourceURL=webpack:///./src/Routes.js?");
 
 /***/ }),
 
@@ -142,7 +142,55 @@ eval("\n\nObject.defineProperty(exports, \"__esModule\", {\n  value: true\n});\n
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-eval("\n\nObject.defineProperty(exports, \"__esModule\", {\n  value: true\n});\n\nvar _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if (\"value\" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();\n\nvar _React = __webpack_require__(/*! React */ \"./node_modules/_react@16.7.0@react/index.js\");\n\nvar _React2 = _interopRequireDefault(_React);\n\nvar _Header = __webpack_require__(/*! ../../components/Header */ \"./src/components/Header.js\");\n\nvar _Header2 = _interopRequireDefault(_Header);\n\nvar _reactRedux = __webpack_require__(/*! react-redux */ \"react-redux\");\n\nfunction _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }\n\nfunction _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError(\"Cannot call a class as a function\"); } }\n\nfunction _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError(\"this hasn't been initialised - super() hasn't been called\"); } return call && (typeof call === \"object\" || typeof call === \"function\") ? call : self; }\n\nfunction _inherits(subClass, superClass) { if (typeof superClass !== \"function\" && superClass !== null) { throw new TypeError(\"Super expression must either be null or a function, not \" + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }\n\nvar Home = function (_React$Component) {\n  _inherits(Home, _React$Component);\n\n  function Home() {\n    _classCallCheck(this, Home);\n\n    return _possibleConstructorReturn(this, (Home.__proto__ || Object.getPrototypeOf(Home)).apply(this, arguments));\n  }\n\n  _createClass(Home, [{\n    key: 'componentDidMount',\n    value: function componentDidMount() {\n      console.log('HOME---componentDidMount');\n    }\n  }, {\n    key: 'render',\n    value: function render() {\n      var props = this.props;\n      return _React2.default.createElement(\n        'div',\n        null,\n        _React2.default.createElement(_Header2.default, null),\n        _React2.default.createElement(\n          'div',\n          null,\n          ' Home,this is ',\n          props.name,\n          ' '\n        )\n      );\n    }\n  }]);\n\n  return Home;\n}(_React2.default.Component);\n\nvar mapStateToProps = function mapStateToProps(state) {\n  return { name: state.name };\n};\nexports.default = (0, _reactRedux.connect)(mapStateToProps, null)(Home);\n\n//# sourceURL=webpack:///./src/container/Home/index.js?");
+eval("\n\nObject.defineProperty(exports, \"__esModule\", {\n  value: true\n});\n\nvar _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if (\"value\" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();\n\nvar _React = __webpack_require__(/*! React */ \"./node_modules/_react@16.7.0@react/index.js\");\n\nvar _React2 = _interopRequireDefault(_React);\n\nvar _Header = __webpack_require__(/*! ../../components/Header */ \"./src/components/Header.js\");\n\nvar _Header2 = _interopRequireDefault(_Header);\n\nvar _reactRedux = __webpack_require__(/*! react-redux */ \"react-redux\");\n\nvar _actions = __webpack_require__(/*! ./store/actions */ \"./src/container/Home/store/actions.js\");\n\nfunction _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }\n\nfunction _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError(\"Cannot call a class as a function\"); } }\n\nfunction _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError(\"this hasn't been initialised - super() hasn't been called\"); } return call && (typeof call === \"object\" || typeof call === \"function\") ? call : self; }\n\nfunction _inherits(subClass, superClass) { if (typeof superClass !== \"function\" && superClass !== null) { throw new TypeError(\"Super expression must either be null or a function, not \" + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }\n\nvar Home = function (_React$Component) {\n  _inherits(Home, _React$Component);\n\n  function Home() {\n    _classCallCheck(this, Home);\n\n    return _possibleConstructorReturn(this, (Home.__proto__ || Object.getPrototypeOf(Home)).apply(this, arguments));\n  }\n\n  _createClass(Home, [{\n    key: 'componentDidMount',\n\n    // 在服务器端不执行\n    value: function componentDidMount() {\n      console.log('HOME---componentDidMount');\n      // if (this.props.list.length) {\n      this.props.getHomeList();\n      // }\n    }\n  }, {\n    key: 'getList',\n    value: function getList() {\n      var list = this.props.list;\n\n      return list.map(function (item, idx) {\n        return _React2.default.createElement(\n          'div',\n          { key: idx },\n          item.name\n        );\n      });\n    }\n  }, {\n    key: 'render',\n    value: function render() {\n      var props = this.props;\n      // console.log('this props list', props)\n      return _React2.default.createElement(\n        'div',\n        null,\n        _React2.default.createElement(_Header2.default, null),\n        _React2.default.createElement(\n          'div',\n          null,\n          ' Home,this is ',\n          props.name,\n          ' '\n        ),\n        this.getList()\n      );\n    }\n  }]);\n\n  return Home;\n}(_React2.default.Component);\n\nHome.loadData = function (store) {\n  //这个函数， 负责在服务器端渲染之前，把这个路由需要的数据提前加载好\n  console.log('HOME.loadData');\n  return store.dispatch((0, _actions.getHomeList)());\n};\n\nvar mapStateToProps = function mapStateToProps(state) {\n  return {\n    name: state.home.name,\n    list: state.home.newsList\n  };\n};\nvar mapDispatchToProps = function mapDispatchToProps(dispatch) {\n  return {\n    getHomeList: function getHomeList() {\n      console.log('test');\n      dispatch((0, _actions.getHomeList)());\n    }\n  };\n};\nexports.default = (0, _reactRedux.connect)(mapStateToProps, mapDispatchToProps)(Home);\n\n//# sourceURL=webpack:///./src/container/Home/index.js?");
+
+/***/ }),
+
+/***/ "./src/container/Home/store/actions.js":
+/*!*********************************************!*\
+  !*** ./src/container/Home/store/actions.js ***!
+  \*********************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+eval("\n\nObject.defineProperty(exports, \"__esModule\", {\n  value: true\n});\nexports.getHomeList = undefined;\n\nvar _axios = __webpack_require__(/*! axios */ \"axios\");\n\nvar _axios2 = _interopRequireDefault(_axios);\n\nvar _constants = __webpack_require__(/*! ./constants */ \"./src/container/Home/store/constants.js\");\n\nfunction _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }\n\nvar changeList = function changeList(list) {\n  return {\n    type: _constants.CHANGE_LIST,\n    list: list\n  };\n};\nvar getHomeList = exports.getHomeList = function getHomeList() {\n  return function (dispatch) {\n    console.log('actions');\n    // 将action 改成promise返回\n    return _axios2.default.get('http://127.0.0.1:3002/ssr/api/news.json?secret=abcd').then(function (res) {\n      // console.log('获取到的后端数据', res.data)\n      var list = res.data.list;\n      dispatch(changeList(list));\n    });\n  };\n};\n\n//# sourceURL=webpack:///./src/container/Home/store/actions.js?");
+
+/***/ }),
+
+/***/ "./src/container/Home/store/constants.js":
+/*!***********************************************!*\
+  !*** ./src/container/Home/store/constants.js ***!
+  \***********************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+eval("\n\nObject.defineProperty(exports, \"__esModule\", {\n  value: true\n});\nvar CHANGE_LIST = exports.CHANGE_LIST = 'HOME/CHANGE_LIST';\n\n//# sourceURL=webpack:///./src/container/Home/store/constants.js?");
+
+/***/ }),
+
+/***/ "./src/container/Home/store/index.js":
+/*!*******************************************!*\
+  !*** ./src/container/Home/store/index.js ***!
+  \*******************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+eval("\n\nObject.defineProperty(exports, \"__esModule\", {\n  value: true\n});\nexports.reducer = undefined;\n\nvar _reducer = __webpack_require__(/*! ./reducer */ \"./src/container/Home/store/reducer.js\");\n\nvar _reducer2 = _interopRequireDefault(_reducer);\n\nfunction _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }\n\nexports.reducer = _reducer2.default;\n\n//# sourceURL=webpack:///./src/container/Home/store/index.js?");
+
+/***/ }),
+
+/***/ "./src/container/Home/store/reducer.js":
+/*!*********************************************!*\
+  !*** ./src/container/Home/store/reducer.js ***!
+  \*********************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+eval("\n\nObject.defineProperty(exports, \"__esModule\", {\n  value: true\n});\n\nvar _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };\n\nvar _constants = __webpack_require__(/*! ./constants */ \"./src/container/Home/store/constants.js\");\n\nvar defaultState = {\n  name: 'dell',\n  newsList: []\n};\n\nexports.default = function () {\n  var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : defaultState;\n  var action = arguments[1];\n\n  switch (action.type) {\n    case _constants.CHANGE_LIST:\n      console.log('数据请求到的list', action.list);\n      return _extends({}, state, { newsList: action.list });\n    default:\n      return state;\n  }\n};\n\n//# sourceURL=webpack:///./src/container/Home/store/reducer.js?");
 
 /***/ }),
 
@@ -154,7 +202,7 @@ eval("\n\nObject.defineProperty(exports, \"__esModule\", {\n  value: true\n});\n
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-eval("\n\nObject.defineProperty(exports, \"__esModule\", {\n  value: true\n});\n\nvar _React = __webpack_require__(/*! React */ \"./node_modules/_react@16.7.0@react/index.js\");\n\nvar _React2 = _interopRequireDefault(_React);\n\nvar _Header = __webpack_require__(/*! ../../components/Header */ \"./src/components/Header.js\");\n\nvar _Header2 = _interopRequireDefault(_Header);\n\nfunction _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }\n\nvar Login = function Login() {\n  return _React2.default.createElement(\n    'div',\n    null,\n    _React2.default.createElement(\n      'div',\n      null,\n      'hello\\uFF0C Login page '\n    )\n  );\n};\n\nexports.default = Login;\n\n//# sourceURL=webpack:///./src/container/Login/index.js?");
+eval("\n\nObject.defineProperty(exports, \"__esModule\", {\n  value: true\n});\n\nvar _React = __webpack_require__(/*! React */ \"./node_modules/_react@16.7.0@react/index.js\");\n\nvar _React2 = _interopRequireDefault(_React);\n\nvar _Header = __webpack_require__(/*! ../../components/Header */ \"./src/components/Header.js\");\n\nvar _Header2 = _interopRequireDefault(_Header);\n\nfunction _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }\n\nvar Login = function Login() {\n  return _React2.default.createElement(\n    'div',\n    null,\n    _React2.default.createElement(_Header2.default, null),\n    _React2.default.createElement(\n      'div',\n      null,\n      'hello\\uFF0C Login page '\n    )\n  );\n};\nLogin.loadData = function () {\n  console.log('LOGIN.loadData');\n};\nexports.default = Login;\n\n//# sourceURL=webpack:///./src/container/Login/index.js?");
 
 /***/ }),
 
@@ -166,7 +214,7 @@ eval("\n\nObject.defineProperty(exports, \"__esModule\", {\n  value: true\n});\n
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-eval("\n\nvar _express = __webpack_require__(/*! express */ \"express\");\n\nvar _express2 = _interopRequireDefault(_express);\n\nvar _util = __webpack_require__(/*! ./util */ \"./src/server/util.js\");\n\nfunction _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }\n\nvar app = (0, _express2.default)();\n\n//静态文件的处理\napp.use(_express2.default.static('public'));\n\napp.get('*', function (req, res) {\n  console.log('服务器获取到的资源路径----》', req.path);\n  res.send((0, _util.render)(req));\n});\n\nvar server = app.listen(3000);\nconsole.log('server port 3000');\n\n//# sourceURL=webpack:///./src/server/index.js?");
+eval("\n\nvar _express = __webpack_require__(/*! express */ \"express\");\n\nvar _express2 = _interopRequireDefault(_express);\n\nvar _reactRouterConfig = __webpack_require__(/*! react-router-config */ \"react-router-config\");\n\nvar _util = __webpack_require__(/*! ./util */ \"./src/server/util.js\");\n\nvar _Routes = __webpack_require__(/*! ../Routes */ \"./src/Routes.js\");\n\nvar _Routes2 = _interopRequireDefault(_Routes);\n\nvar _store = __webpack_require__(/*! ../store */ \"./src/store/index.js\");\n\nfunction _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }\n\nvar app = (0, _express2.default)();\n\n//静态文件的处理\napp.use(_express2.default.static('public'));\n\napp.get('*', function (req, res) {\n  console.log('服务器获取到的资源路径----》', req.path);\n  var store = (0, _store.getStore)();\n\n  // 根据路由的路径， 来往store里面加数据\n  var matchedRoutes = (0, _reactRouterConfig.matchRoutes)(_Routes2.default, req.path);\n\n  // 异步的获取数据的loadData\n  var promises = [];\n\n  // console.log('routes', routes)\n  // console.log('matchedRoutes', matchedRoutes)\n  matchedRoutes.forEach(function (item) {\n    // console.log('item.route.loadData', item.route.loadData)\n    if (item.route.loadData) {\n      promises.push(item.route.loadData(store));\n    }\n  });\n  Promise.all(promises).then(function () {\n    console.log('ssr-html', (0, _util.render)(store, _Routes2.default, req));\n    res.send((0, _util.render)(store, _Routes2.default, req));\n  });\n  // render(req) 是异步的渲染\n  // res.send(render(req))\n});\n\nvar server = app.listen(3000);\nconsole.log('server port 3000');\n\n//# sourceURL=webpack:///./src/server/index.js?");
 
 /***/ }),
 
@@ -178,7 +226,7 @@ eval("\n\nvar _express = __webpack_require__(/*! express */ \"express\");\n\nvar
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-eval("\n\nObject.defineProperty(exports, \"__esModule\", {\n  value: true\n});\nexports.render = undefined;\n\nvar _react = __webpack_require__(/*! react */ \"react\");\n\nvar _react2 = _interopRequireDefault(_react);\n\nvar _server = __webpack_require__(/*! react-dom/server */ \"react-dom/server\");\n\nvar _reactRouterDom = __webpack_require__(/*! react-router-dom */ \"react-router-dom\");\n\nvar _redux = __webpack_require__(/*! redux */ \"redux\");\n\nvar _reactRedux = __webpack_require__(/*! react-redux */ \"react-redux\");\n\nvar _reduxThunk = __webpack_require__(/*! redux-thunk */ \"redux-thunk\");\n\nvar _reduxThunk2 = _interopRequireDefault(_reduxThunk);\n\nvar _Routes = __webpack_require__(/*! ../Routes */ \"./src/Routes.js\");\n\nvar _Routes2 = _interopRequireDefault(_Routes);\n\nvar _store = __webpack_require__(/*! ../store */ \"./src/store/index.js\");\n\nvar _store2 = _interopRequireDefault(_store);\n\nfunction _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }\n\nvar render = exports.render = function render(req) {\n  var content = (0, _server.renderToString)(_react2.default.createElement(\n    _reactRedux.Provider,\n    { store: (0, _store2.default)() },\n    _react2.default.createElement(\n      _reactRouterDom.StaticRouter,\n      { location: req.path, context: {} },\n      _Routes2.default\n    )\n  ));\n  return '<html>\\n      <head>\\n        <title>ssr</title>\\n      </head>\\n      <body>\\n       <div id=\"root\">' + content + '</div>\\n       <script src=\\'/index.js\\'></script>\\n      </body>\\n    </html>';\n};\n\n//# sourceURL=webpack:///./src/server/util.js?");
+eval("\n\nObject.defineProperty(exports, \"__esModule\", {\n  value: true\n});\nexports.render = undefined;\n\nvar _react = __webpack_require__(/*! react */ \"react\");\n\nvar _react2 = _interopRequireDefault(_react);\n\nvar _server = __webpack_require__(/*! react-dom/server */ \"react-dom/server\");\n\nvar _reactRouterDom = __webpack_require__(/*! react-router-dom */ \"react-router-dom\");\n\nvar _reactRouterConfig = __webpack_require__(/*! react-router-config */ \"react-router-config\");\n\nvar _redux = __webpack_require__(/*! redux */ \"redux\");\n\nvar _reactRedux = __webpack_require__(/*! react-redux */ \"react-redux\");\n\nvar _reduxThunk = __webpack_require__(/*! redux-thunk */ \"redux-thunk\");\n\nvar _reduxThunk2 = _interopRequireDefault(_reduxThunk);\n\nvar _Routes = __webpack_require__(/*! ../Routes */ \"./src/Routes.js\");\n\nvar _Routes2 = _interopRequireDefault(_Routes);\n\nvar _store = __webpack_require__(/*! ../store */ \"./src/store/index.js\");\n\nvar _store2 = _interopRequireDefault(_store);\n\nfunction _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }\n\nvar render = exports.render = function render(store, routes, req) {\n  // 如果在这里获取数据，能拿到数据，并且填充到store中\n  // store里面需要填充什么，不知道，需要结合当前用户请求地址和路由，做判断\n  // 如果用户访问 / 路径， 就拿home组件的异步数据\n  // 如果 用户访问login， 就拿login组件的异步数据\n\n  console.log('store.getState', store.getState());\n  var content = (0, _server.renderToString)(_react2.default.createElement(\n    _reactRedux.Provider,\n    { store: store },\n    _react2.default.createElement(\n      _reactRouterDom.StaticRouter,\n      { location: req.path, context: {} },\n      _react2.default.createElement(\n        'div',\n        null,\n        routes.map(function (route) {\n          return _react2.default.createElement(_reactRouterDom.Route, route);\n        })\n      )\n    )\n  ));\n  return '<html>\\n        <head>\\n          <title>ssr</title> \\n        </head>\\n        <body>\\n         <div id=\"root\">' + content + '</div>\\n         <script>\\n          window.context= {\\n            state:' + JSON.stringify(store.getState()) + '\\n          }\\n         </script>\\n         <script src=\\'/index.js\\'></script>\\n        </body>\\n      </html>';\n  // routes.some(route => {\n  // matchPath: 只能匹配一层路由\n  //   // const match = matchPath(req.path, route)\n  //   if (match) {\n  //     matchedRoutes.push(route)\n  //     // promises.push(route.loadData(match))\n  //     // return match\n  //   }\n  // })\n\n  // 让matchRoutes里面所有的组件,对应的loadData 方法执行一次\n  // console.log('server端匹配到的路由', matchedRoutes)\n};\n\n//# sourceURL=webpack:///./src/server/util.js?");
 
 /***/ }),
 
@@ -190,7 +238,18 @@ eval("\n\nObject.defineProperty(exports, \"__esModule\", {\n  value: true\n});\n
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-eval("\n\nObject.defineProperty(exports, \"__esModule\", {\n  value: true\n});\n\nvar _redux = __webpack_require__(/*! redux */ \"redux\");\n\nvar _reduxThunk = __webpack_require__(/*! redux-thunk */ \"redux-thunk\");\n\nvar _reduxThunk2 = _interopRequireDefault(_reduxThunk);\n\nfunction _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }\n\nvar reducer = function reducer() {\n  var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : { name: 'dell' };\n  var action = arguments[1];\n\n  return state;\n};\n\n// 每个用户反问，都创建一个新的store\nvar getStore = function getStore() {\n  return (0, _redux.createStore)(reducer, (0, _redux.applyMiddleware)(_reduxThunk2.default));\n};\nexports.default = getStore;\n\n//# sourceURL=webpack:///./src/store/index.js?");
+eval("\n\nObject.defineProperty(exports, \"__esModule\", {\n  value: true\n});\nexports.getClientStore = exports.getStore = undefined;\n\nvar _redux = __webpack_require__(/*! redux */ \"redux\");\n\nvar _reduxThunk = __webpack_require__(/*! redux-thunk */ \"redux-thunk\");\n\nvar _reduxThunk2 = _interopRequireDefault(_reduxThunk);\n\nvar _store = __webpack_require__(/*! ../container/Home/store */ \"./src/container/Home/store/index.js\");\n\nfunction _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }\n\nvar reducer = (0, _redux.combineReducers)({\n  home: _store.reducer\n});\n// 每个用户访问，都创建一个新的store\nvar getStore = exports.getStore = function getStore() {\n  return (0, _redux.createStore)(reducer, (0, _redux.applyMiddleware)(_reduxThunk2.default));\n};\n\nvar getClientStore = exports.getClientStore = function getClientStore() {\n  // 用服务器端的store的state，作为客户端store的state的默认值\n  // 保持首次渲染，前后端sotre一致\n  var defaultState = window.context.state;\n  // const defaultState = {}\n  console.log('服务器端给客户端的默认值state', defaultState);\n  return (0, _redux.createStore)(reducer, defaultState, (0, _redux.applyMiddleware)(_reduxThunk2.default));\n};\n// export default getStore\n\n//# sourceURL=webpack:///./src/store/index.js?");
+
+/***/ }),
+
+/***/ "axios":
+/*!************************!*\
+  !*** external "axios" ***!
+  \************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+eval("module.exports = require(\"axios\");\n\n//# sourceURL=webpack:///external_%22axios%22?");
 
 /***/ }),
 
@@ -257,6 +316,17 @@ eval("module.exports = require(\"react-dom/server\");\n\n//# sourceURL=webpack:/
 /***/ (function(module, exports) {
 
 eval("module.exports = require(\"react-redux\");\n\n//# sourceURL=webpack:///external_%22react-redux%22?");
+
+/***/ }),
+
+/***/ "react-router-config":
+/*!**************************************!*\
+  !*** external "react-router-config" ***!
+  \**************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+eval("module.exports = require(\"react-router-config\");\n\n//# sourceURL=webpack:///external_%22react-router-config%22?");
 
 /***/ }),
 
