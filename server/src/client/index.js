@@ -8,7 +8,7 @@ import { getClientStore } from '../store'
 // console.log('module.hot', module.hot)
 // const renderMethod = module.hot ? ReactDom.render : ReactDom.hydrate
 const store = getClientStore()
-console.log('客户端获取到的sotre', store)
+// console.log('客户端获取到的sotre', store)
 const App = () => {
   return (
     <Provider store={store}>
