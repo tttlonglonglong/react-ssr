@@ -13,6 +13,43 @@ app.all('*', function(req, res, next) {
   //让options尝试请求快速结束
   else next()
 })
+app.get('/ssr/api/login.json', function(req, res) {
+  var data = {
+    success: true,
+    data: { login: true }
+  }
+  res.send(data)
+})
+app.get('/ssr/api/isLogin.json', function(req, res) {
+  var data = {
+    success: true,
+    data: { login: false }
+  }
+  res.send(data)
+})
+app.get('/ssr/api/logout.json', function(req, res) {
+  var data = {
+    success: true,
+    data: { login: false }
+  }
+  res.send(data)
+})
+app.get('/ssr/api/transiations.json', function(req, res) {
+  var paragraph = Mock.mock({
+    'list|5': [
+      {
+        'id|+1': 1,
+        title: '@ctitle(5,12)',
+        name: '@cparagraph(50,150)'
+      }
+    ]
+  })
+  var data = {
+    success: true,
+    data: paragraph
+  }
+  res.send(data)
+})
 
 app.get('/ssr/api/news.json', function(req, res) {
   var data = Mock.mock({
@@ -20,7 +57,7 @@ app.get('/ssr/api/news.json', function(req, res) {
       {
         'id|+1': 1,
         // name: '@cname'，
-        name: 'cname'
+        name: '@cname'
       }
     ]
   })

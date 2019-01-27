@@ -4,25 +4,28 @@ import { StaticRouter, Route, matchPath } from 'react-router-dom'
 import { matchRoutes } from 'react-router-config'
 import { createStore, applyMiddleware } from 'redux'
 import { Provider } from 'react-redux'
+import { renderRoutes } from 'react-router-config'
 import thunk from 'redux-thunk'
 
 import routes from '../Routes'
 import getStore from '../store'
 
-export const render = (store, routes, req) => {
+export const render = (store, routes, req, context) => {
   // 如果在这里获取数据，能拿到数据，并且填充到store中
   // store里面需要填充什么，不知道，需要结合当前用户请求地址和路由，做判断
   // 如果用户访问 / 路径， 就拿home组件的异步数据
   // 如果 用户访问login， 就拿login组件的异步数据
 
-  console.log('store.getState', store.getState())
+  // console.log('store.getState', store.getState())
+  console.log('server--context', context)
   const content = renderToString(
     <Provider store={store}>
-      <StaticRouter location={req.path} context={{}}>
+      <StaticRouter location={req.path} context={context}>
         <div>
-          {routes.map(route => (
+          {renderRoutes(routes)}
+          {/* {routes.map(route => (
             <Route {...route} />
-          ))}
+          ))} */}
         </div>
       </StaticRouter>
     </Provider>

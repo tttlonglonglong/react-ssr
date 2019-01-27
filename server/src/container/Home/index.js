@@ -20,8 +20,8 @@ class Home extends React.Component {
     // console.log('this props list', props)
     return (
       <div>
-        <Header />
-        <div> Home,this is {props.name} </div>
+        {/* <Header /> */}
+        <div> Home,this is Home page{props.name} </div>
         {this.getList()}
       </div>
     )

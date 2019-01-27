@@ -33,8 +33,8 @@ app.use(
 )
 
 app.get('*', function(req, res) {
-  console.log('服务器获取到的资源路径----》', req.path)
-  const store = getStore()
+  console.log('服务器获取到的资源路径----》', req.get('cookie'))
+  const store = getStore(req)
 
   // 根据路由的路径， 来往store里面加数据
   const matchedRoutes = matchRoutes(routes, req.path)
@@ -51,8 +51,19 @@ app.get('*', function(req, res) {
     }
   })
   Promise.all(promises).then(() => {
-    console.log('ssr-html', render(store, routes, req))
-    res.send(render(store, routes, req))
+    console.log('server-loadData', promises)
+    // console.log('ssr-html', render(store, routes, req))
+    const context = {}
+    const html = render(store, routes, req, context)
+    if (context.action === 'REPLACE') {
+      res.redirect(301, context.url)
+    } else if (context.NOT_FOUND) {
+      res.status(404)
+      res.send(html)
+    } else {
+      res.send(html)
+    }
+    console.log('渲染后的context----', context)
   })
   // render(req) 是异步的渲染
   // res.send(render(store, routes, req))
