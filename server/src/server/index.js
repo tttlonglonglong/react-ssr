@@ -72,7 +72,9 @@ app.get('*', function(req, res) {
     .then(() => {
       // console.log('server-loadData', promises)
       // console.log('ssr-html', render(store, routes, req))
-      const context = {}
+      const context = {
+        css: []
+      }
       const html = render(store, routes, req, context)
       if (context.action === 'REPLACE') {
         res.redirect(301, context.url)

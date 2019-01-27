@@ -8,7 +8,8 @@ class Home extends React.Component {
   componentWillMount() {
     // 服务器端渲染：才有的方法
     if (this.props.staticContext && styles._getCss) {
-      this.props.staticContext.css = styles._getCss()
+      // this.props.staticContext.css = styles._getCss()
+      this.props.staticContext.css.push(styles._getCss())
       // console.log('styles', styles)
       // console.log('styles._getContent:', styles._getContent())
       // console.log('styles._getCss:', styles._getCss())
@@ -40,12 +41,6 @@ class Home extends React.Component {
   }
 }
 
-Home.loadData = store => {
-  //这个函数，
-  console.log('HOME.loadData')
-  return store.dispatch(getHomeList())
-}
-
 const mapStateToProps = state => ({
   name: state.home.name,
   list: state.home.newsList
@@ -56,7 +51,16 @@ const mapDispatchToProps = dispatch => ({
     dispatch(getHomeList())
   }
 })
-export default connect(
+
+const exportHome = connect(
   mapStateToProps,
   mapDispatchToProps
 )(Home)
+
+exportHome.loadData = store => {
+  //这个函数，
+  console.log('HOME.loadData')
+  return store.dispatch(getHomeList())
+}
+
+export default exportHome

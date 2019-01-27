@@ -30,11 +30,12 @@ export const render = (store, routes, req, context) => {
       </StaticRouter>
     </Provider>
   )
-  const cssStr = context.css ? context.css : ''
-  console.log(cssStr)
+  console.log('context.css------->', context.css.length)
+  const cssStr = context.css.length ? context.css.join('\n') : ''
+  console.log('context.css------->', cssStr)
   return `<html>
         <head>
-          <title>ssr</title> 
+          <title>ssr11</title> 
           <style>${cssStr}</style>
         </head>
         <body>

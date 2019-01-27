@@ -23,10 +23,7 @@ class Translation extends React.Component {
     )
   }
 }
-Translation.loadData = store => {
-  console.log('Translation.loadData', store)
-  return store.dispatch(getTranslationList())
-}
+
 const mapStateToProps = state => ({
   login: state.head.login,
   list: state.translation.list
@@ -37,7 +34,14 @@ const mapDispatchToProps = dispatch => ({
     dispatch(getTranslationList())
   }
 })
-export default connect(
+
+const exportTranslation = connect(
   mapStateToProps,
   mapDispatchToProps
 )(Translation)
+
+exportTranslation.loadData = store => {
+  console.log('Translation.loadData', store)
+  return store.dispatch(getTranslationList())
+}
+export default exportTranslation

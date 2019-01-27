@@ -7,7 +7,7 @@ const App = props => {
   // console.log('APP---props', props)
   return (
     <div>
-      <Header />
+      <Header staticContext={props.staticContext} />
       {renderRoutes(routes[0].routes)}
     </div>
   )
