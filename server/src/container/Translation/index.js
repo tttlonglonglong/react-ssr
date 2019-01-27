@@ -2,6 +2,9 @@ import React from 'React'
 import { connect } from 'react-redux'
 import { getTranslationList } from './store/actions'
 import { Redirect } from 'react-router'
+import styles from './style.css'
+import widthStyle from '../../widthStyle'
+
 class Translation extends React.Component {
   componentDidMount() {
     console.log('Translation----componentDidMount')
@@ -9,13 +12,17 @@ class Translation extends React.Component {
   }
   getList() {
     const { list } = this.props
-    return list.map((item, idx) => <div key={idx}>{item.title}</div>)
+    return list.map((item, idx) => (
+      <div className={styles.item} key={idx}>
+        {item.title}
+      </div>
+    ))
   }
   render() {
     return this.props.login ? (
-      <div>
+      <div className={styles.container}>
         {/* <Header /> */}
-        <div>hello， Translation page </div>
+        {/* <div>hello， Translation page </div> */}
         {this.getList()}
       </div>
     ) : (
@@ -38,7 +45,7 @@ const mapDispatchToProps = dispatch => ({
 const exportTranslation = connect(
   mapStateToProps,
   mapDispatchToProps
-)(Translation)
+)(widthStyle(Translation, styles))
 
 exportTranslation.loadData = store => {
   console.log('Translation.loadData', store)

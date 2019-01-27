@@ -84,7 +84,7 @@ app.get('*', function(req, res) {
       } else {
         res.send(html)
       }
-      console.log('渲染后的context----', context)
+      // console.log('渲染后的context----', context)
     })
     .catch(() => {
       // res.send('sury， request error')

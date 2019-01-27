@@ -3,19 +3,20 @@ import Header from '../../components/Header'
 import { connect } from 'react-redux'
 import { getHomeList } from './store/actions'
 import styles from './style.css'
+import widthStyle from '../../widthStyle'
 
 class Home extends React.Component {
-  componentWillMount() {
-    // 服务器端渲染：才有的方法
-    if (this.props.staticContext && styles._getCss) {
-      // this.props.staticContext.css = styles._getCss()
-      this.props.staticContext.css.push(styles._getCss())
-      // console.log('styles', styles)
-      // console.log('styles._getContent:', styles._getContent())
-      // console.log('styles._getCss:', styles._getCss())
-      // console.log('styles._insertCss::', styles._insertCss())
-    }
-  }
+  // componentWillMount() {
+  //   // 服务器端渲染：才有的方法
+  //   if (this.props.staticContext && styles._getCss) {
+  //     // this.props.staticContext.css = styles._getCss()
+  //     this.props.staticContext.css.push(styles._getCss())
+  //     // console.log('styles', styles)
+  //     // console.log('styles._getContent:', styles._getContent())
+  //     // console.log('styles._getCss:', styles._getCss())
+  //     // console.log('styles._insertCss::', styles._insertCss())
+  //   }
+  // }
   // 在服务器端不执行
   componentDidMount() {
     // console.log('HOME---componentDidMount')
@@ -26,15 +27,19 @@ class Home extends React.Component {
   }
   getList() {
     const { list } = this.props
-    return list.map((item, idx) => <div key={idx}>{item.name}</div>)
+    return list.map((item, idx) => (
+      <div className={styles.item} key={idx}>
+        {item.name}
+      </div>
+    ))
   }
   render() {
     const props = this.props
     // console.log('this props list', props)
     return (
-      <div className={styles.test}>
+      <div className={styles.container}>
         {/* <Header /> */}
-        <div> Home,this is Home page{props.name} </div>
+        {/* <div> Home,this is Home page{props.name} </div> */}
         {this.getList()}
       </div>
     )
@@ -55,7 +60,7 @@ const mapDispatchToProps = dispatch => ({
 const exportHome = connect(
   mapStateToProps,
   mapDispatchToProps
-)(Home)
+)(widthStyle(Home, styles))
 
 exportHome.loadData = store => {
   //这个函数，

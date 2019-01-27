@@ -30,9 +30,9 @@ export const render = (store, routes, req, context) => {
       </StaticRouter>
     </Provider>
   )
-  console.log('context.css------->', context.css.length)
+  // console.log('context.css------->', context.css.length)
   const cssStr = context.css.length ? context.css.join('\n') : ''
-  console.log('context.css------->', cssStr)
+  // console.log('context.css------->', cssStr)
   return `<html>
         <head>
           <title>ssr11</title> 
