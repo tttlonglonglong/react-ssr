@@ -6,6 +6,7 @@ import { matchRoutes } from 'react-router-config'
 import { render } from './util'
 import routes from '../Routes'
 import { getStore } from '../store'
+import { rejects } from 'assert'
 
 const app = express()
 
@@ -47,24 +48,55 @@ app.get('*', function(req, res) {
   matchedRoutes.forEach(item => {
     // console.log('item.route.loadData', item.route.loadData)
     if (item.route.loadData) {
-      promises.push(item.route.loadData(store))
+      const promise = new Promise((resolve, rejects) => {
+        item.route
+          .loadData(store)
+          .then(resolve)
+          .catch(resolve)
+      })
+      // promises 内部加载的数据，不管成功还是失败，最终promises 都会触发 all 方法
+      promises.push(promise)
+      // promises.push(item.route.loadData(store))
     }
   })
-  Promise.all(promises).then(() => {
-    console.log('server-loadData', promises)
-    // console.log('ssr-html', render(store, routes, req))
-    const context = {}
-    const html = render(store, routes, req, context)
-    if (context.action === 'REPLACE') {
-      res.redirect(301, context.url)
-    } else if (context.NOT_FOUND) {
-      res.status(404)
-      res.send(html)
-    } else {
-      res.send(html)
-    }
-    console.log('渲染后的context----', context)
-  })
+
+  //数据请求失败的情况处理
+  // 一个页面要加载 A，B，C，D四个组件，这四个组件都需要服务端加载数据
+  //假设A组件加载数据错误
+  //B，C，D 组件有几种情况
+  //1. B，C，D组件数据已经加载完成, store会有B，C，D的数据，调用catch方法，B/C/D的内容都会被正确显示
+  //2. 假设B，C，D接口比较慢，B，C，D的组件没有加载完成，BCD处理pending状态，A出错直接走到catch的逻辑里面，BCD的内容无法展示
+
+  // promises= [a, b, c, d]
+  Promise.all(promises)
+    .then(() => {
+      // console.log('server-loadData', promises)
+      // console.log('ssr-html', render(store, routes, req))
+      const context = {}
+      const html = render(store, routes, req, context)
+      if (context.action === 'REPLACE') {
+        res.redirect(301, context.url)
+      } else if (context.NOT_FOUND) {
+        res.status(404)
+        res.send(html)
+      } else {
+        res.send(html)
+      }
+      console.log('渲染后的context----', context)
+    })
+    .catch(() => {
+      // res.send('sury， request error')
+      const context = {}
+      const html = render(store, routes, req, context)
+      if (context.action === 'REPLACE') {
+        res.redirect(301, context.url)
+      } else if (context.NOT_FOUND) {
+        res.status(404)
+        res.send(html)
+      } else {
+        res.send(html)
+      }
+    })
   // render(req) 是异步的渲染
   // res.send(render(store, routes, req))
   // res.send(render(req))
