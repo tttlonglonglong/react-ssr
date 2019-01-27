@@ -14,7 +14,25 @@ const serverConfig = {
     // 输出路径，根目录下的build
     path: path.resolve(__dirname, 'build')
   },
-  externals: [nodeExternals()]
+  externals: [nodeExternals()],
+  module: {
+    rules: [
+      {
+        test: /\.css?$/,
+        use: [
+          'isomorphic-style-loader',
+          {
+            loader: 'css-loader',
+            options: {
+              importLoaders: 1,
+              modules: true,
+              localIdentName: '[name]_[local]_[hash:base64:5]'
+            }
+          }
+        ]
+      }
+    ]
+  }
 }
 
 // 浏览器端(客户端)，需要把path所有包的内容，都打包到最终生成的bundle.js中

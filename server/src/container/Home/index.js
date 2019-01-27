@@ -2,11 +2,23 @@ import React from 'React'
 import Header from '../../components/Header'
 import { connect } from 'react-redux'
 import { getHomeList } from './store/actions'
+import styles from './style.css'
 
 class Home extends React.Component {
+  componentWillMount() {
+    // 服务器端渲染：才有的方法
+    if (this.props.staticContext && styles._getCss) {
+      this.props.staticContext.css = styles._getCss()
+      // console.log('styles', styles)
+      // console.log('styles._getContent:', styles._getContent())
+      // console.log('styles._getCss:', styles._getCss())
+      // console.log('styles._insertCss::', styles._insertCss())
+    }
+  }
   // 在服务器端不执行
   componentDidMount() {
-    console.log('HOME---componentDidMount')
+    // console.log('HOME---componentDidMount')
+    // console.log('styles', styles)
     // if (this.props.list.length) {
     this.props.getHomeList()
     // }
@@ -19,7 +31,7 @@ class Home extends React.Component {
     const props = this.props
     // console.log('this props list', props)
     return (
-      <div>
+      <div className={styles.test}>
         {/* <Header /> */}
         <div> Home,this is Home page{props.name} </div>
         {this.getList()}

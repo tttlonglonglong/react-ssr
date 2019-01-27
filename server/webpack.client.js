@@ -12,6 +12,24 @@ const clientConfig = {
     filename: 'index.js',
     // 输出路径，根目录下的build
     path: path.resolve(__dirname, 'public')
+  },
+  module: {
+    rules: [
+      {
+        test: /\.css?$/,
+        use: [
+          'style-loader',
+          {
+            loader: 'css-loader',
+            options: {
+              importLoaders: 1,
+              modules: true,
+              localIdentName: '[name]_[local]_[hash:base64:5]'
+            }
+          }
+        ]
+      }
+    ]
   }
 }
 module.exports = merge(config, clientConfig)

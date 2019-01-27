@@ -23,7 +23,7 @@ export const getHomeList = () => {
     // const request = server ? serverAxios : clientAxios
 
     return axiosInstance.get('/api/news.json').then(res => {
-      console.log('获取到的后端数据', res.data)
+      // console.log('获取到的后端数据', res.data)
       const list = res.data.list || []
       dispatch(changeList(list))
     })

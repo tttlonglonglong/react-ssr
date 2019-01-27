@@ -4,10 +4,9 @@ import { connect } from 'react-redux'
 import { actions } from './store/'
 
 class Header extends React.Component {
-  handleLogin() {}
   render() {
     const { login, handleLogin, handleLogout } = this.props
-    // console.log('header--->', this.props)
+    console.log('header--->', this.props)
     return (
       <div>
         <Link to="/">首页</Link>
